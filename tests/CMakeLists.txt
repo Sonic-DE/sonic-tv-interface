@@ -27,3 +27,17 @@ target_include_directories(envmanager_config_test PRIVATE ${CMAKE_SOURCE_DIR}/en
 target_link_libraries(envmanager_config_test PRIVATE Qt6::Test KF6::ConfigCore)
 set_target_properties(envmanager_config_test PROPERTIES AUTOMOC ON)
 add_test(NAME envmanager_config_test COMMAND envmanager_config_test)
+
+# Exercise the real input/rumble policy with SDL virtual gamepads, without hardware.
+add_executable(inputhandler_rumble_test
+    inputhandler_rumble_test.cpp
+    ${CMAKE_SOURCE_DIR}/inputhandler/controllermanager.cpp
+    ${CMAKE_SOURCE_DIR}/inputhandler/sdlcontroller.cpp
+    ${CMAKE_SOURCE_DIR}/inputhandler/device.cpp
+    ${CMAKE_SOURCE_DIR}/inputhandler/devicewatcher.cpp
+    ${CMAKE_SOURCE_DIR}/inputhandler/xdgremotedesktopsystem.cpp
+)
+target_include_directories(inputhandler_rumble_test PRIVATE ${CMAKE_SOURCE_DIR}/inputhandler)
+kconfig_add_kcfg_files(inputhandler_rumble_test GENERATE_MOC ${CMAKE_SOURCE_DIR}/inputhandler/inputhandlersettings.kcfgc)
+target_link_libraries(inputhandler_rumble_test PRIVATE Qt6::Test Qt6::DBus KF6::ConfigCore SDL3::SDL3)
+add_test(NAME inputhandler_rumble_test COMMAND inputhandler_rumble_test)

@@ -21,7 +21,7 @@ Window {
 
     property bool _pendingScreenshot: false
 
-    Kirigami.Theme.inherit = false
+    Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
     flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
     color: Qt.rgba(0, 0, 0, 0.3 * sidebar.openFactor)
@@ -31,17 +31,15 @@ Window {
     }
 
     function showOverlay() {
+        Bigscreen.NavigationRumble.playConfirmRumble();
         showMaximized();
         window.raise();
         window.requestActivate();
     }
 
-    function showOverlay() {
-        showMaximized();
-    }
-
     function hideOverlay() {
         tasksView.visible = false;
+        Bigscreen.NavigationRumble.playCancelRumble();
         sidebar.close();
     }
 

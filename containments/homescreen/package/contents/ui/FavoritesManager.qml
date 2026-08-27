@@ -78,7 +78,10 @@ Window {
             }
         }
 
-        Bigscreen.BackHandler.onActivated: root.hideOverlay()
+        Bigscreen.BackHandler.onActivated: {
+            Bigscreen.NavigationRumble.playNavigationRumble();
+            root.hideOverlay()
+        }
 
         Kirigami.Theme.inherit: false
         Kirigami.Theme.colorSet: Kirigami.Theme.View
@@ -149,6 +152,7 @@ Window {
                         }
                         onClicked: {
                             FavsManager.addFav(Plasmoid.applicationListModel.itemMap(index));
+                            Bigscreen.NavigationRumble.playConfirmRumble();
                         }
                     }
                 }
@@ -188,6 +192,7 @@ Window {
                         }
                         onClicked: {
                             FavsManager.removeFav(Plasmoid.favsListModel.itemMap(index));
+                            Bigscreen.NavigationRumble.playConfirmRumble();
                         }
                     }
                 }

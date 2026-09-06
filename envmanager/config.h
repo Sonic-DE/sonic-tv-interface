@@ -38,8 +38,7 @@ const QMap<QString, QMap<QString, QVariant>> KDEGLOBALS_SETTINGS = {{"KDE", {{"L
 const QMap<QString, QMap<QString, QVariant>> PLASMAKEYBOARDRC_SETTINGS = {{"General", {{"keyboardNavigationEnabled", true}}}};
 
 // plasma-bigscreen/kwinrc
-const QMap<QString, QMap<QString, QVariant>> KWINRC_DEFAULT_SETTINGS = {
-    {"Wayland", {{"InputMethod", "/usr/share/applications/org.kde.plasma.keyboard.desktop"}}}};
+const QMap<QString, QMap<QString, QVariant>> KWINRC_DEFAULT_SETTINGS = {};
 
 QMap<QString, QMap<QString, QVariant>> getKwinrcSettings(KSharedConfig::Ptr m_bigscreenConfig)
 {
@@ -59,10 +58,6 @@ QMap<QString, QMap<QString, QVariant>> getKwinrcSettings(KSharedConfig::Ptr m_bi
             {"org.kde.kdecoration2",
              {
                  {"NoPlugin", false} // ensure that the window decoration plugin is always enabled, otherwise we get Qt default window decorations
-             }},
-            {"Wayland",
-             {
-                 {"VirtualKeyboardEnabled", true} // enable vkbd
              }},
             {"Input", {{"TabletMode", "off"}}},
             {"Effect-hidecursor",

@@ -3,19 +3,19 @@
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-configure_file(plasma-bigscreen-wayland.in ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland)
+configure_file(plasma-bigscreen-x11.in ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11)
 install(PROGRAMS
-	${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland
+	${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11
 	plasma-bigscreen-common-env
 	plasma-bigscreen-swap-session
 	DESTINATION ${KDE_INSTALL_BINDIR})
 
-configure_file(plasma-bigscreen-wayland.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland.desktop)
+configure_file(plasma-bigscreen-x11.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11.desktop)
 configure_file(plasma-bigscreen-swap-session.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-swap-session.desktop)
 
 install(FILES
-	${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland.desktop
-    DESTINATION ${KDE_INSTALL_DATADIR}/wayland-sessions
+	${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11.desktop
+    DESTINATION ${KDE_INSTALL_DATADIR}/xsessions
 )
 
 install(FILES
@@ -24,6 +24,6 @@ install(FILES
 )
 
 # Dev session for Plasma developers
-configure_file(plasma-bigscreen-wayland-dev.in ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland-dev)
-configure_file(plasma-bigscreen-wayland-dev.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-wayland-dev.desktop)
+configure_file(plasma-bigscreen-x11-dev.in ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11-dev)
+configure_file(plasma-bigscreen-x11-dev.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11-dev.desktop)
 configure_file(install-sessions.sh.cmake ${CMAKE_CURRENT_BINARY_DIR}/install-sessions.sh)

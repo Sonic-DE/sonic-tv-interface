@@ -22,9 +22,8 @@ Dependencies:
     'frameworks/kwidgetsaddons': '@latest-kf6'
     'frameworks/kwindowsystem': '@latest-kf6'
     'frameworks/solid': '@latest-kf6'
-    'frameworks/ksvg': '@latest-kf6'
-    'plasma/kwayland': '@same'
-    'plasma/libkscreen': '@same'
+     'frameworks/ksvg': '@latest-kf6'
+     'plasma/libkscreen': '@same'
     'plasma/libplasma': '@same'
     'plasma/plasma-workspace': '@same'
     'plasma/plasma-activities': '@latest-kf6' # Different versioning due to being a former Framework

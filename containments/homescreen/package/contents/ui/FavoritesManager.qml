@@ -12,25 +12,21 @@ import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
 import org.kde.bigscreen as Bigscreen
 import org.kde.private.biglauncher
-import org.kde.layershell as LayerShell
 import org.kde.plasma.plasmoid
 
 Window {
     id: root
     title: i18n("Favorites Manager")
 
-    LayerShell.Window.scope: "overlay"
-    LayerShell.Window.anchors: LayerShell.Window.AnchorTop | LayerShell.Window.AnchorLeft | LayerShell.Window.AnchorRight | LayerShell.Window.AnchorBottom
-    LayerShell.Window.layer: LayerShell.Window.LayerTop
-    LayerShell.Window.exclusionZone: -1
-
-    flags: Qt.FramelessWindowHint
+    flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
     color: 'transparent'
 
     function showOverlay() {
         favsContainerAddSection.positionViewAtBeginning();
         favsContainerRemoveSection.positionViewAtBeginning();
         root.showFullScreen();
+        root.raise();
+        root.requestActivate();
     }
 
     function hideOverlay() {

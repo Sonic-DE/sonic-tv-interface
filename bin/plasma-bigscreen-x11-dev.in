@@ -14,4 +14,4 @@ if [ -n "$XDG_RUNTIME_DIR" ]; then
     systemctl --user daemon-reload
 fi
 
-plasma-bigscreen-wayland "$@"
+plasma-bigscreen-x11 "$@"

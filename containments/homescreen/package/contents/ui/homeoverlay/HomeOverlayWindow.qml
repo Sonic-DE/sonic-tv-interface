@@ -11,15 +11,9 @@ import org.kde.plasma.private.nanoshell as NanoShell
 import org.kde.private.biglauncher
 import org.kde.bigscreen as Bigscreen
 import org.kde.bigscreen.controllerhandler as ControllerHandler
-import org.kde.layershell as LayerShell
 
 Window {
     id: window
-
-    LayerShell.Window.scope: "overlay"
-    LayerShell.Window.anchors: LayerShell.Window.AnchorTop | LayerShell.Window.AnchorLeft | LayerShell.Window.AnchorRight | LayerShell.Window.AnchorBottom
-    LayerShell.Window.layer: LayerShell.Window.LayerOverlay
-    LayerShell.Window.exclusionZone: -1
 
     signal minimizeAllTasksRequested()
     signal searchRequested()
@@ -27,13 +21,19 @@ Window {
 
     property bool _pendingScreenshot: false
 
-    Kirigami.Theme.inherit: false
+    Kirigami.Theme.inherit = false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
-    flags: Qt.FramelessWindowHint
+    flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
     color: Qt.rgba(0, 0, 0, 0.3 * sidebar.openFactor)
 
     function openTasks() {
         tasksView.open();
+    }
+
+    function showOverlay() {
+        showMaximized();
+        window.raise();
+        window.requestActivate();
     }
 
     function showOverlay() {
@@ -71,7 +71,7 @@ Window {
             if (window.visible) {
                 sidebar.close();
             } else {
-                window.showFullScreen();
+                window.showOverlay();
             }
         }
     }

@@ -12,7 +12,7 @@ This repository contains shell components for Plasma Bigscreen.
 * Documentation: [invent.kde.org/plasma/plasma-bigscreen/-/wikis/home](https://invent.kde.org/plasma/plasma-bigscreen/-/wikis/home)
 * Development channel: [matrix.to/#/#plasma-bigscreen:kde.org](https://matrix.to/#/#plasma-bigscreen:kde.org)
 
-Plasma Bigscreen is a user-friendly, open-source, Wayland desktop environment designed for devices like HTPCs and SBCs connected to TVs and projectors. It provides an intuitive experience that allows for easy navigation from a distance using remote controls. Discover an engaging environment that adapts to your preferences, offering the safety and privacy protection that come with free and open source software!
+Plasma Bigscreen is a user-friendly, open-source, X11 desktop shell designed for devices like HTPCs and SBCs connected to TVs and projectors. It provides an intuitive experience that allows for easy navigation from a distance using remote controls. Discover an engaging environment that adapts to your preferences, offering the safety and privacy protection that come with free and open source software!
 
 <img src="lookandfeel/contents/splash/images/logo-big.svg" width=100px/>
 
@@ -88,28 +88,17 @@ See [this wiki page](https://invent.kde.org/plasma/plasma-bigscreen/-/wikis/Buil
 
 </details>
 
-To start the Bigscreen homescreen in a window, you can use the following script:
+To start the Bigscreen session for development, use the development launcher after installing the development session:
 
 ```bash
-#/bin/bash
+# Install the development session (requires sudo for system directories)
+sudo ./build/bin/install-sessions.sh
 
-# Environment variables
-export QT_QUICK_CONTROLS_STYLE=org.kde.breeze
-export QT_ENABLE_GLYPH_CACHE_WORKAROUND=1
-export QT_QUICK_CONTROLS_MOBILE=true
-export PLASMA_INTEGRATION_USE_PORTAL=1
-export PLASMA_PLATFORM=mediacenter
-export QT_FILE_SELECTORS=mediacenter
-
-# Set ~/.config/plasma-bigscreen/... as location for default bigscreen configs (i.e. envmanager generated)
-export XDG_CONFIG_DIRS="$HOME/.config/plasma-bigscreen:/etc/xdg:$XDG_CONFIG_DIRS"
-
-# ensure that we have our environment settings set properly prior to the shell being loaded (otherwise there is a race condition with autostart)
-QT_QPA_PLATFORM=offscreen plasma-bigscreen-envmanager --apply-settings
-
-export PLASMA_DEFAULT_SHELL=org.kde.plasma.bigscreen
-dbus-run-session kwin_wayland "plasmashell -p org.kde.plasma.bigscreen"
+# Or run the development launcher directly
+./build/bin/plasma-bigscreen-x11-dev
 ```
+
+Bigscreen is the desktop shell selected by `PLASMA_DEFAULT_SHELL`, while `startplasma-x11` owns Sonic Win/KWin and the single `plasmashell` process.
 
 <br/>
 

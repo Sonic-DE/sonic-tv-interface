@@ -69,12 +69,8 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     Multimedia
     WebEngineCore
     WebEngineQuick
-    WaylandClient
 )
 find_package(QCoro6 ${QCORO_MIN_VERSION} REQUIRED COMPONENTS Core Quick Qml)
-
-find_package(PlasmaWaylandProtocols REQUIRED)
-find_package(Wayland REQUIRED COMPONENTS Client)
 
 # libcec (TV Remote support)
 pkg_check_modules(Libcec IMPORTED_TARGET libcec>=6)
@@ -115,3 +111,9 @@ kde_configure_git_pre_commit_hook(CHECKS CLANG_FORMAT)
 ki18n_install(po)
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
+
+option(BUILD_TESTING "Build Sonic TV interface tests" OFF)
+include(CTest)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()

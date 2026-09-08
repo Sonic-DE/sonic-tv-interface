@@ -27,5 +27,4 @@ Dependencies:
     'plasma/libplasma': '@same'
     'plasma/plasma-workspace': '@same'
     'plasma/plasma-activities': '@latest-kf6' # Different versioning due to being a former Framework
-    'plasma/plasma-activities-stats': '@latest-kf6' # Different versioning due to being a former Framework
-    'plasma/plasma5support': '@same'
+     'plasma/plasma-activities-stats': '@latest-kf6' # Different versioning due to being a former Framework

@@ -9,7 +9,6 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
-import Qt5Compat.GraphicalEffects
 
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami

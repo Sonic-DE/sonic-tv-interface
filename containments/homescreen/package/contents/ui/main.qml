@@ -7,7 +7,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import QtQuick.Window
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import org.kde.taskmanager as TaskManager
 
 import org.kde.plasma.plasmoid
@@ -232,11 +232,12 @@ ContainmentItem {
             }
 
             // Wallpaper blur
-            // We attempted to use MultiEffect in the past, but it had very poor performance
-            FastBlur {
+            MultiEffect {
                 id: blur
-                radius: 50
-                cached: true
+                blurEnabled: true
+                blur: 1
+                blurMax: 50
+                blurMultiplier: 1
                 source: controlledWallpaperSource
                 anchors.fill: parent
                 visible: true // Don't load and unload, which is laggy

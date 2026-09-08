@@ -5,7 +5,7 @@
 */
 
 import QtQuick
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 import QtQuick.Layouts
 
 import org.kde.plasma.components 3.0 as PlasmaComponents
@@ -29,13 +29,14 @@ Rectangle {
         level: 3
     }
 
-    DropShadow {
+    MultiEffect {
         anchors.fill: deviceTypeHeading
-        horizontalOffset: 0
-        verticalOffset: 2
-        radius: 8.0
-        samples: 17
-        color: Qt.rgba(0,0,0,0.6)
+        shadowEnabled: true
+        shadowHorizontalOffset: 0
+        shadowVerticalOffset: 2
+        shadowBlur: 1
+        blurMax: 8
+        shadowColor: Qt.rgba(0,0,0,0.6)
         source: deviceTypeHeading
     }
 }

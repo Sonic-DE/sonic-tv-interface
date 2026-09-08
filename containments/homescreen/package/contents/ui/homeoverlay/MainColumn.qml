@@ -6,7 +6,7 @@ import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
-import org.kde.plasma.plasma5support as P5Support
+import org.kde.plasma.clock as PlasmaClock
 import org.kde.private.biglauncher
 import org.kde.bigscreen as Bigscreen
 import org.kde.bigscreen.controllerhandler as ControllerHandler
@@ -66,18 +66,15 @@ ColumnLayout {
             color: Kirigami.Theme.alternateBackgroundColor
         }
 
-        P5Support.DataSource {
+        PlasmaClock.Clock {
             id: timeSource
-            engine: "time"
-            connectedSources: ["Local"]
-            interval: 60000
-            intervalAlignment: P5Support.Types.AlignToMinute
+            trackSeconds: false
         }
 
         contentItem: ColumnLayout {
             QQC2.Label {
                 id: timeLabel
-                text: Qt.formatTime(timeSource.data["Local"]["DateTime"], "h:mm ap")
+                text: Qt.formatTime(timeSource.dateTime, "h:mm ap")
 
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
@@ -87,7 +84,7 @@ ColumnLayout {
 
             QQC2.Label {
                 id: dateLabel
-                text: Qt.formatDate(timeSource.data["Local"]["DateTime"], "MMMM d, yyyy")
+                text: Qt.formatDate(timeSource.dateTime, "MMMM d, yyyy")
 
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter

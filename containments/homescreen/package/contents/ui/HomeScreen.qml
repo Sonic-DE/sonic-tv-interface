@@ -7,7 +7,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import QtQuick.Window
-import Qt5Compat.GraphicalEffects
+import QtQuick.Effects
 
 import org.kde.plasma.plasmoid
 import org.kde.plasma.core as PlasmaCore
@@ -111,15 +111,17 @@ Item {
     }
 
     // Opacity "fade" effect at edges
-    OpacityMask {
+    MultiEffect {
         id: launcherOpacityGradient
         anchors.fill: launcher
 
+        maskEnabled: true
         source: launcher
         maskSource: Rectangle {
             id: mask
             width: launcher.width
             height: launcher.height
+            layer.enabled: true
 
             property real gradientPct: (Kirigami.Units.gridUnit * 2) / launcher.height
 

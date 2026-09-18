@@ -28,9 +28,12 @@ Bigscreen.ScrollablePage {
     rightPadding: Kirigami.Units.smallSpacing
     bottomPadding: Kirigami.Units.smallSpacing
 
+    property Item openOnFocusChanged: coloredTileDelegate
+
     onActiveFocusChanged: {
         if (activeFocus) {
-            coloredTileDelegate.forceActiveFocus();
+            openOnFocusChanged.forceActiveFocus();
+            openOnFocusChanged = coloredTileDelegate;
         }
     }
 
@@ -84,7 +87,10 @@ Bigscreen.ScrollablePage {
             text: i18n("Global theme")
             description: i18n("Set the system theme")
 
-            onClicked: themeSidebar.open();
+            onClicked: {
+                root.openOnFocusChanged = desktopThemeButton;
+                themeSidebar.open();
+            }
         }
 
         QQC2.Label {
@@ -146,6 +152,10 @@ Bigscreen.ScrollablePage {
             onActivated: {
                 BigscreenShell.Settings.navigationRumbleIntensity = currentIndex;
             }
+
+            onDialogOpened: {
+                root.openOnFocusChanged = gameControllerRumbleIntensity;
+            }
         }
 
 
@@ -167,7 +177,10 @@ Bigscreen.ScrollablePage {
             icon.name: "preferences-system-time"
             text: i18n("Adjust date and time")
 
-            onClicked: deviceTimeSettings.open()
+            onClicked: {
+                root.openOnFocusChanged = timeDateDelegate;
+                deviceTimeSettings.open();
+            }
         }
 
         QQC2.Label {
@@ -194,6 +207,7 @@ Bigscreen.ScrollablePage {
                 shortcutsPicker.getActionPath = getActionPath;
                 shortcutsPicker.setActionPath = setActionPath;
                 shortcutsPicker.resetActionPath = resetActionPath;
+                root.openOnFocusChanged = homeOverlayShortcut;
                 shortcutsPicker.open();
             }
         }
@@ -214,6 +228,7 @@ Bigscreen.ScrollablePage {
                 shortcutsPicker.getActionPath = getActionPath;
                 shortcutsPicker.setActionPath = setActionPath;
                 shortcutsPicker.resetActionPath = resetActionPath;
+                root.openOnFocusChanged = homescreenShortcutDelegate;
                 shortcutsPicker.open();
             }
         }
@@ -234,6 +249,7 @@ Bigscreen.ScrollablePage {
                 shortcutsPicker.getActionPath = getActionPath;
                 shortcutsPicker.setActionPath = setActionPath;
                 shortcutsPicker.resetActionPath = resetActionPath;
+                root.openOnFocusChanged = settingsShortcutDelegate;
                 shortcutsPicker.open();
             }
         }
@@ -253,24 +269,21 @@ Bigscreen.ScrollablePage {
                 shortcutsPicker.getActionPath = getActionPath;
                 shortcutsPicker.setActionPath = setActionPath;
                 shortcutsPicker.resetActionPath = resetActionPath;
+                root.openOnFocusChanged = tasksShortcutDelegate;
                 shortcutsPicker.open();
             }
         }
 
         ShortcutsPickerSidebar {
             id: shortcutsPicker
-            onClosed: settingsShortcutDelegate.forceActiveFocus()
         }
 
         DeviceTimeSettingsSidebar {
             id: deviceTimeSettings
-            onClosed: timeDateDelegate.forceActiveFocus()
         }
 
         ThemeSidebar {
             id: themeSidebar
-            onClosed: desktopThemeButton.forceActiveFocus()
         }
     }
 }
-

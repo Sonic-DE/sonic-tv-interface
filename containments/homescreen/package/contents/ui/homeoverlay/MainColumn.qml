@@ -18,6 +18,8 @@ ColumnLayout {
     property bool showTasksButton
     property bool closeControllerSuppressState
 
+    property var locale: Qt.locale()
+
     signal minimizeAllTasksRequested()
     signal searchRequested()
     signal tasksRequested()
@@ -36,6 +38,7 @@ ColumnLayout {
 
     onVisibleChanged: {
         if (visible) {
+            root.locale = Qt.locale();
             homeButton.forceActiveFocus();
 
             // Don't have controller input suppressed while the home overlay is open, so user can interact
@@ -74,7 +77,7 @@ ColumnLayout {
         contentItem: ColumnLayout {
             QQC2.Label {
                 id: timeLabel
-                text: Qt.formatTime(timeSource.dateTime, "h:mm ap")
+                text: root.locale.toString(timeSource.dateTime, root.locale.timeFormat(Locale.ShortFormat))
 
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter
@@ -84,7 +87,7 @@ ColumnLayout {
 
             QQC2.Label {
                 id: dateLabel
-                text: Qt.formatDate(timeSource.dateTime, "MMMM d, yyyy")
+                text: root.locale.toString(timeSource.dateTime, root.locale.dateFormat(Locale.LongFormat))
 
                 Layout.fillWidth: true
                 horizontalAlignment: Text.AlignHCenter

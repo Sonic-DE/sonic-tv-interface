@@ -16,7 +16,6 @@ ColumnLayout {
     id: root
 
     property bool showTasksButton
-    property bool closeControllerSuppressState
 
     property var locale: Qt.locale()
 
@@ -42,12 +41,9 @@ ColumnLayout {
             homeButton.forceActiveFocus();
 
             // Don't have controller input suppressed while the home overlay is open, so user can interact
-            // Save the state to a variable
-            closeControllerSuppressState = ControllerHandler.ControllerHandlerStatus.inputSuppressed;
-            ControllerHandler.ControllerHandlerStatus.inputSuppressed = false;
+            ControllerHandler.ControllerHandlerStatus.beginIgnoreSuppression();
         } else {
-            // Restore controller input suppressed state (which may have been toggled here)
-            ControllerHandler.ControllerHandlerStatus.inputSuppressed = closeControllerSuppressState;
+            ControllerHandler.ControllerHandlerStatus.endIgnoreSuppression();
         }
     }
 
@@ -184,10 +180,11 @@ ColumnLayout {
                 text: i18n("Controller")
                 description: checked ? i18n("Currently capturing keys…") : i18n("Key capture off")
 
-                checked: !root.closeControllerSuppressState
+                checked: !ControllerHandler.ControllerHandlerStatus.inputManuallySuppressed
                 onCheckedChanged: {
-                    root.closeControllerSuppressState = !checked;
-                    checked = Qt.binding(() => !root.closeControllerSuppressState)
+                    // Takes effect when the overlay stops ignoring suppression on close.
+                    ControllerHandler.ControllerHandlerStatus.inputSuppressed = !checked;
+                    checked = Qt.binding(() => !ControllerHandler.ControllerHandlerStatus.inputManuallySuppressed)
                 }
             }
 

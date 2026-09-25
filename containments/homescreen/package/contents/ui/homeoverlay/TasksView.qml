@@ -12,7 +12,7 @@ import org.kde.bigscreen.controllerhandler as ControllerHandler
 
 import org.kde.taskmanager as TaskManager
 
-Rectangle {
+Item {
     id: root
 
     readonly property int taskCount: tasksModel.count
@@ -33,8 +33,6 @@ Rectangle {
 
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
-
-    color: Qt.rgba(Kirigami.Theme.backgroundColor.r, Kirigami.Theme.backgroundColor.g, Kirigami.Theme.backgroundColor.b, 0.8)
 
     NumberAnimation on opacity {
         id: closeAnim

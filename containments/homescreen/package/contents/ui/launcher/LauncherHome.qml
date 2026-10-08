@@ -112,10 +112,6 @@ FocusScope {
                 return recentView.model.mapToSource(recentView.model.index(row, 0));
             }
 
-            function storageId(row) {
-                return sourceIndex(row).data(favoriteIdRole);
-            }
-
             title: i18n("Recent")
             model: KItemModels.KSortFilterProxyModel {
                 sourceModel: Kicker.RecentUsageModel {
@@ -137,7 +133,7 @@ FocusScope {
             delegate: Delegates.AppDelegate {
                 property real sectionOpacity: 1.0
                 property var modelData: typeof model !== "undefined" ? model : null
-                applicationStorageId: recentView.storageId(index)
+                applicationStorageId: modelData ? (modelData.favoriteId ?? "") : ""
                 launchApplication: function() {
                     recentView.model.sourceModel.trigger(recentView.sourceIndex(index).row, "", null);
                 }

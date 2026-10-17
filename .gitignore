@@ -6,6 +6,7 @@
 /compile_commands.json
 .clangd
 .cache
+.ccls-cache/
 .idea
 /cmake-build*
 build

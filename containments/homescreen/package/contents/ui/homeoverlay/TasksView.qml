@@ -1,14 +1,15 @@
 // SPDX-FileCopyrightText: 2026 Devin Lin <devin@kde.org>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
-import org.kde.private.biglauncher
+import org.kde.ki18n as KI18n
 import org.kde.bigscreen as Bigscreen
-import org.kde.bigscreen.controllerhandler as ControllerHandler
 
 import org.kde.taskmanager as TaskManager
 
@@ -23,26 +24,37 @@ Item {
     signal closeHomeRequested()
 
     function open() {
+        closeAnim.stop();
         opacity = 0;
         visible = true;
         openAnim.restart();
     }
     function close() {
+        openAnim.stop();
         closeAnim.restart();
     }
 
     Kirigami.Theme.inherit: false
     Kirigami.Theme.colorSet: Kirigami.Theme.View
 
-    NumberAnimation on opacity {
+    KI18n.KI18nContext {
+        id: translations
+        translationDomain: "plasma_applet_org.kde.bigscreen.homescreen"
+    }
+
+    NumberAnimation {
         id: closeAnim
+        target: root
+        property: "opacity"
         duration: Kirigami.Units.shortDuration
         to: 0
         onFinished: root.visible = false
     }
 
-    NumberAnimation on opacity {
+    NumberAnimation {
         id: openAnim
+        target: root
+        property: "opacity"
         duration: Kirigami.Units.shortDuration
         to: 1
     }
@@ -105,7 +117,7 @@ Item {
             Layout.margins: Kirigami.Units.gridUnit
             Layout.topMargin: Kirigami.Units.gridUnit * 2
 
-            text: i18nc("As in: These apps are currently opened", "Open Apps")
+            text: translations.i18nc("As in: These apps are currently opened", "Open Apps")
             font.pixelSize: 32
             font.weight: Font.Light
 
@@ -132,6 +144,10 @@ Item {
             KeyNavigation.down: closeAllButton
 
             delegate: TaskDelegate {
+                id: taskDelegate
+                required property var model
+                required property int index
+
                 tasksModel: gridView.model
 
                 width: gridView.cellWidth
@@ -141,7 +157,7 @@ Item {
 
                 Keys.onLeftPressed: (event) => {
                     // If left-most column, focus on main bar
-                    if ((model.index % gridView.columns) === 0) {
+                    if ((taskDelegate.index % gridView.columns) === 0) {
                         event.accepted = true;
                         root.focusTasksRequested();
                     } else {
@@ -156,7 +172,7 @@ Item {
             Layout.margins: Kirigami.Units.gridUnit
             Layout.alignment: Qt.AlignHCenter
 
-            text: i18n("Close all apps")
+            text: translations.i18n("Close all apps")
             icon.name: "edit-clear-all"
 
             onClicked: {

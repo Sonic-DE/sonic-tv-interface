@@ -41,3 +41,15 @@ target_include_directories(inputhandler_rumble_test PRIVATE ${CMAKE_SOURCE_DIR}/
 kconfig_add_kcfg_files(inputhandler_rumble_test GENERATE_MOC ${CMAKE_SOURCE_DIR}/inputhandler/inputhandlersettings.kcfgc)
 target_link_libraries(inputhandler_rumble_test PRIVATE Qt6::Test Qt6::DBus KF6::ConfigCore SDL3::SDL3)
 add_test(NAME inputhandler_rumble_test COMMAND inputhandler_rumble_test)
+
+if(TARGET Qt6::qmllint)
+    add_test(NAME homeoverlay_qmllint
+        COMMAND Qt6::qmllint -W 0
+            -I ${CMAKE_BINARY_DIR}/containments/homescreen/plugin/qml
+            -I ${CMAKE_BINARY_DIR}/bin
+            -I ${KDE_INSTALL_FULL_QMLDIR}
+            ${CMAKE_SOURCE_DIR}/containments/homescreen/package/contents/ui/homeoverlay/HomeOverlaySidebar.qml
+            ${CMAKE_SOURCE_DIR}/containments/homescreen/package/contents/ui/homeoverlay/HomeOverlayWindow.qml
+            ${CMAKE_SOURCE_DIR}/containments/homescreen/package/contents/ui/homeoverlay/TasksView.qml
+    )
+endif()

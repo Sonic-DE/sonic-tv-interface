@@ -72,6 +72,7 @@ find_package(Qt6 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS
     WebEngineQuick
 )
 find_package(QCoro6 ${QCORO_MIN_VERSION} REQUIRED COMPONENTS Core Quick Qml)
+ecm_find_qmlmodule(org.kde.ki18n 1.0 REQUIRED)
 
 # libcec (TV Remote support)
 pkg_check_modules(Libcec IMPORTED_TARGET libcec>=6)

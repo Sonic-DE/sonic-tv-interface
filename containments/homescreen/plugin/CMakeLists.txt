@@ -30,6 +30,35 @@ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/org.kde.biglauncher.xml DESTINATION ${
 kcoreaddons_add_plugin(org.kde.bigscreen.homescreen INSTALL_NAMESPACE "plasma/applets")
 target_sources(org.kde.bigscreen.homescreen PRIVATE ${homescreen_SRCS})
 
+# The applet registers this module manually when its containment is created.
+# Generate tooling metadata without compiling automatic registrations or
+# installing a second runtime module.
+qt_extract_metatypes(org.kde.bigscreen.homescreen OUTPUT_FILES homescreen_metatypes)
+set_target_properties(org.kde.bigscreen.homescreen PROPERTIES QT_CONSUMES_METATYPES TRUE)
+set(homescreen_foreign_types "$<REMOVE_DUPLICATES:$<FILTER:$<TARGET_PROPERTY:org.kde.bigscreen.homescreen,SOURCES>,INCLUDE,metatypes.json$>>")
+file(GENERATE OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/homescreen_foreign_types.rsp"
+    CONTENT "--foreign-types=$<JOIN:${homescreen_foreign_types},$<COMMA>>\n")
+set(homescreen_lint_dir "${CMAKE_CURRENT_BINARY_DIR}/qml/org/kde/private/biglauncher")
+file(GENERATE OUTPUT "${homescreen_lint_dir}/qmldir" CONTENT
+    "module org.kde.private.biglauncher\ntypeinfo biglauncher.qmltypes\n")
+add_custom_command(
+    OUTPUT "${homescreen_lint_dir}/biglauncher.qmltypes"
+    BYPRODUCTS "${CMAKE_CURRENT_BINARY_DIR}/biglauncher_tooling_registrations.cpp"
+    COMMAND Qt6::qmltyperegistrar
+        "@${CMAKE_CURRENT_BINARY_DIR}/homescreen_foreign_types.rsp"
+        --generate-qmltypes "${homescreen_lint_dir}/biglauncher.qmltypes"
+        --import-name org.kde.private.biglauncher
+        --major-version 1 --minor-version 0
+        -o "${CMAKE_CURRENT_BINARY_DIR}/biglauncher_tooling_registrations.cpp"
+        ${homescreen_metatypes}
+    DEPENDS ${homescreen_metatypes} ${homescreen_foreign_types}
+        "${CMAKE_CURRENT_BINARY_DIR}/homescreen_foreign_types.rsp"
+        Qt6::qmltyperegistrar
+    VERBATIM
+)
+add_custom_target(homescreen_qml_tooling ALL
+    DEPENDS "${homescreen_lint_dir}/biglauncher.qmltypes")
+
 find_package(LibTaskManager REQUIRED)
 
 target_link_libraries(org.kde.bigscreen.homescreen

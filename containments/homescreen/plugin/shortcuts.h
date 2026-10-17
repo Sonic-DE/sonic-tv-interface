@@ -6,13 +6,16 @@
 #ifndef SHORTCUTS_H
 #define SHORTCUTS_H
 
-#include <QObject>
 #include <KGlobalAccel>
 #include <QKeySequence>
+#include <QObject>
+#include <QtQml/qqmlregistration.h>
 
 class Shortcuts : public QObject
 {
     Q_OBJECT
+    QML_NAMED_ELEMENT(Shortcuts)
+    QML_SINGLETON
 
 public:
     static Shortcuts* instance();

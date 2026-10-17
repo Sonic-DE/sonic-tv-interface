@@ -1,17 +1,15 @@
 // SPDX-FileCopyrightText: 2026 Devin Lin <devin@kde.org>
 // SPDX-License-Identifier: GPL-2.0-or-later
 
+pragma ComponentBehavior: Bound
+
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Window
 import QtQuick.Templates as T
-import QtQuick.Controls as QQC2
 
 import org.kde.kirigami as Kirigami
-import org.kde.plasma.private.nanoshell as NanoShell
-import org.kde.private.biglauncher
+import org.kde.private.biglauncher as Launcher
 import org.kde.bigscreen as Bigscreen
-import org.kde.bigscreen.controllerhandler as ControllerHandler
 
 Window {
     id: window
@@ -64,7 +62,7 @@ Window {
     Bigscreen.BackHandler.onActivated: sidebar.close()
 
     Connections {
-        target: Shortcuts
+        target: Launcher.Shortcuts
 
         function onToggleHomeOverlay() {
             if (window.visible) {

@@ -57,7 +57,7 @@ Bigscreen.ScrollablePage {
             Component.onCompleted: updateIndex()
             Connections {
                 target: kcm.displayModel
-                function onSelectedDisplayIdChanged() {
+                function onSelectedDisplayChanged() {
                     selectedDisplayDelegate.updateIndex();
                 }
             }
@@ -96,26 +96,37 @@ Bigscreen.ScrollablePage {
             id: modeDelegate
             text: i18n("Screen mode (Resolution & Refresh Rate)")
             model: kcm.displayModel.selectedDisplayAvailableModes
-            enabled: kcm.displayModel.selectedDisplayEnabled
+            enabled: kcm.displayModel.selectedDisplayEnabled && model.length > 1
 
             function updateIndex() {
-                if (enabled) {
-                    currentIndex = indexOfValue(kcm.displayModel.selectedDisplayMode);
-                }
+                currentIndex = indexOfValue(kcm.displayModel.selectedDisplayMode);
             }
 
             // Update the combobox value when the model updates or display changes
+            onCountChanged: updateIndex()
+            onModelChanged: updateIndex()
             Component.onCompleted: updateIndex()
             Connections {
                 target: kcm.displayModel
-                function onSelectedDisplayIdChanged() {
+                function onSelectedDisplayModeChanged() {
                     modeDelegate.updateIndex();
                 }
             }
 
             onActivated: {
+                const oldMode = kcm.displayModel.selectedDisplayMode;
+                if (currentValue === oldMode) {
+                    return;
+                }
                 kcm.displayModel.selectedDisplayMode = currentValue;
+                kcm.displayModel.syncDisplayOptions();
                 updateIndex();
+
+                confirmDialog.confirm(modeDelegate, () => {
+                    kcm.displayModel.selectedDisplayMode = oldMode;
+                    kcm.displayModel.syncDisplayOptions();
+                    modeDelegate.updateIndex();
+                });
             }
 
             KeyNavigation.down: scaleDelegate
@@ -134,15 +145,46 @@ Bigscreen.ScrollablePage {
 
             ScaleDialog {
                 id: scaleDialog
-                onClosed: scaleDelegate.forceActiveFocus()
+
+                property real oldScale
+                property bool pendingConfirm: false
+
+                onOpened: {
+                    oldScale = kcm.displayModel.selectedDisplayScale;
+                    pendingConfirm = false;
+                }
 
                 onAccepted: {
+                    if (Math.abs(scaleDialog.displayScale - oldScale) < 0.001) { // if scale hasn't changed
+                        return;
+                    }
                     kcm.displayModel.selectedDisplayScale = scaleDialog.displayScale;
                     kcm.displayModel.syncDisplayOptions();
+                    pendingConfirm = true;
+                }
+
+                // Open the confirmation once this dialog is fully closed, so it doesn't steal focus from it
+                onClosed: {
+                    if (!pendingConfirm) {
+                        scaleDelegate.forceActiveFocus();
+                        return;
+                    }
+                    pendingConfirm = false;
+
+                    const revertScale = oldScale;
+                    confirmDialog.confirm(scaleDelegate, () => {
+                        kcm.displayModel.selectedDisplayScale = revertScale;
+                        kcm.displayModel.syncDisplayOptions();
+                    });
                 }
             }
         }
 
         Item { Layout.fillHeight: true }
+
+        // Must be inside contentItem, page-level children have no window and can't open
+        ConfirmDialog {
+            id: confirmDialog
+        }
     }
 }

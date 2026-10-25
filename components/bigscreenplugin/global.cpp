@@ -155,9 +155,9 @@ void Global::handleScreenshotMetaDataReceived(const QVariantMap &metadata, int f
         if (result.isNull() || !result.save(filePath)) {
             qWarning() << "Screenshot failed";
         } else {
-            QDBusMessage osd = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
-                                                              QStringLiteral("/org/kde/osdService"),
-                                                              QStringLiteral("org.kde.osdService"),
+            QDBusMessage osd = QDBusMessage::createMethodCall(QStringLiteral("org.sonicde.sonicshell"),
+                                                              QStringLiteral("/org/sonicde/osdService"),
+                                                              QStringLiteral("org.sonicde.osdService"),
                                                               QStringLiteral("showText"));
             osd.setArguments({QStringLiteral("spectacle"), i18n("Screenshot saved to %1", filePath)});
             QDBusConnection::sessionBus().call(osd, QDBus::NoBlock);
@@ -173,7 +173,7 @@ void Global::swapSession()
     const QString path = u"PATH="_s + qgetenv("PATH");
     const QString home = u"HOME="_s + qgetenv("HOME");
     const QString plasmaBigscreenLaunchReason = u"PLASMA_BIGSCREEN_LAUNCH_REASON="_s + launchReason();
-    const QString xdgCurrentDesktop = u"XDG_CURRENT_DESKTOP=KDE"_s;
+    const QString xdgCurrentDesktop = u"XDG_CURRENT_DESKTOP=SonicDE:KDE"_s;
 
     process.startDetached(u"env"_s,
                           QStringList() << u"-i"_s << path << home << plasmaBigscreenLaunchReason << xdgCurrentDesktop << u"plasma-bigscreen-swap-session"_s);

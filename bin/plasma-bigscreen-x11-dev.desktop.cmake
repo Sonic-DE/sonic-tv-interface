@@ -5,7 +5,7 @@
 Type=XSession
 Exec=@CMAKE_INSTALL_FULL_LIBEXECDIR@/plasma-dbus-run-session-if-needed ${CMAKE_INSTALL_FULL_BINDIR}/plasma-bigscreen-x11-dev
 TryExec=${CMAKE_INSTALL_FULL_BINDIR}/plasma-bigscreen-x11-dev
-DesktopNames=KDE
+DesktopNames=SonicDE;KDE;
 Name=Plasma Bigscreen (Development)
 Name[ar]=بلازما الشاشة الكبيرة (تطويرية)
 Name[bg]=Plasma Bigscreen (Разработка)

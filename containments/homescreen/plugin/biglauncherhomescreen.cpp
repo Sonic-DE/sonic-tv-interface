@@ -110,9 +110,9 @@ void HomeScreen::openHomeOverlay()
 
 void HomeScreen::showOSD(const QString &text, const QString &iconName)
 {
-    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.kde.plasmashell"),
-                                                      QStringLiteral("/org/kde/osdService"),
-                                                      QStringLiteral("org.kde.osdService"),
+    QDBusMessage msg = QDBusMessage::createMethodCall(QStringLiteral("org.sonicde.sonicshell"),
+                                                      QStringLiteral("/org/sonicde/osdService"),
+                                                      QStringLiteral("org.sonicde.osdService"),
                                                       QStringLiteral("showText"));
 
     msg.setArguments({iconName, text});

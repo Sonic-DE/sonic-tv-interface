@@ -2,10 +2,10 @@
 # SPDX-FileCopyrightText: 2025 Seshan Ravikumar <seshan@sineware.ca>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-if [ -z "$XDG_CURRENT_DESKTOP" ] || [ "$XDG_CURRENT_DESKTOP" != "KDE" ]; then
-    echo "This script can only be run on KDE Plasma."
-    exit 1
-fi
+case ":${XDG_CURRENT_DESKTOP}:" in
+    *:SonicDE:*) ;;
+    *) echo "This script can only be run on SonicDE."; exit 1 ;;
+esac
 
 CACHE_DIR="$HOME/.cache/plasma-bigscreen"
 SAVED_ENV="$CACHE_DIR/saved-env"
@@ -24,7 +24,7 @@ swap_to_bigscreen() {
     # Start plasma-bigscreen-inputhandler
     QT_QPA_PLATFORM=offscreen plasma-bigscreen-inputhandler &
 
-    plasmashell --replace &
+    sonicshell --replace &
 }
 
 swap_to_default() {
@@ -37,7 +37,7 @@ swap_to_default() {
     # Kill plasma-bigscreen-inputhandler
     pkill -f plasma-bigscreen-inputhandler
 
-    plasmashell --replace &
+    sonicshell --replace &
 }
 
 if [ "$PLASMA_BIGSCREEN_LAUNCH_REASON" = "swap" ]; then

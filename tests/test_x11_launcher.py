@@ -53,7 +53,7 @@ echo "ENVMANAGER_CALLED $@" >> "$LAUNCHER_TEST_LOG"
 echo "STARTPLASMA_X11_CALLED" >> "$LAUNCHER_TEST_LOG"
 echo "PLASMA_PLATFORM=$PLASMA_PLATFORM" >> "$LAUNCHER_TEST_LOG"
 echo "QT_FILE_SELECTORS=$QT_FILE_SELECTORS" >> "$LAUNCHER_TEST_LOG"
-echo "PLASMA_DEFAULT_SHELL=$PLASMA_DEFAULT_SHELL" >> "$LAUNCHER_TEST_LOG"
+echo "SONIC_DEFAULT_SHELL=$SONIC_DEFAULT_SHELL" >> "$LAUNCHER_TEST_LOG"
 echo "PLASMA_INTEGRATION_USE_PORTAL=$PLASMA_INTEGRATION_USE_PORTAL" >> "$LAUNCHER_TEST_LOG"
 echo "XDG_CONFIG_DIRS=$XDG_CONFIG_DIRS" >> "$LAUNCHER_TEST_LOG"
 exit 42
@@ -87,7 +87,7 @@ exit 42
         # Environment variables propagated
         self.assertIn("PLASMA_PLATFORM=mediacenter", log)
         self.assertIn("QT_FILE_SELECTORS=mediacenter", log)
-        self.assertIn("PLASMA_DEFAULT_SHELL=org.kde.plasma.bigscreen", log)
+        self.assertIn("SONIC_DEFAULT_SHELL=org.kde.plasma.bigscreen", log)
         self.assertIn("PLASMA_INTEGRATION_USE_PORTAL=1", log)
         self.assertIn("plasma-bigscreen", log)  # XDG_CONFIG_DIRS contains plasma-bigscreen
 

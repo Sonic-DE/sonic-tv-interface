@@ -5,7 +5,7 @@
 Type=XSession
 Exec=@CMAKE_INSTALL_FULL_LIBEXECDIR@/plasma-dbus-run-session-if-needed ${CMAKE_INSTALL_FULL_BINDIR}/plasma-bigscreen-x11
 TryExec=${CMAKE_INSTALL_FULL_BINDIR}/plasma-bigscreen-x11
-DesktopNames=KDE
+DesktopNames=SonicDE;KDE;
 Name=Plasma Bigscreen
 Name[ar]=بلازما الشاشة الكبيرة
 Name[az]=Plasma Böyük Ekran
@@ -93,4 +93,4 @@ Comment[uk]=Плазма для великих екранів від KDE
 Comment[zh_CN]=KDE Plasma 大屏幕
 Comment[zh_TW]=來自 KDE 的 Plasma 大螢幕
 X-KDE-PluginInfo-Version=${PROJECT_VERSION}
-OnlyShowIn=KDE
+OnlyShowIn=SonicDE;

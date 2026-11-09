@@ -2,7 +2,7 @@
 
 SonicDE's big-screen interface for TVs, designed to be used from the sofa with a remote or game controller.
 
-## Unreleased
+## 6.8.2 (2026-11-10)
 
 - Now presents itself with SonicDE names and identity throughout the desktop.
 - The TV session is now called "SonicDE TV" on the login screen, in every language SonicDE is translated into. If you used it before, choose it once more after upgrading.

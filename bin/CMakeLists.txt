@@ -10,11 +10,11 @@ install(PROGRAMS
 	plasma-bigscreen-swap-session
 	DESTINATION ${KDE_INSTALL_BINDIR})
 
-configure_file(plasma-bigscreen-x11.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11.desktop)
+configure_file(sonicde-tv.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/sonicde-tv.desktop)
 configure_file(plasma-bigscreen-swap-session.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-swap-session.desktop)
 
 install(FILES
-	${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11.desktop
+	${CMAKE_CURRENT_BINARY_DIR}/sonicde-tv.desktop
     DESTINATION ${KDE_INSTALL_DATADIR}/xsessions
 )
 
@@ -25,5 +25,5 @@ install(FILES
 
 # Dev session for Plasma developers
 configure_file(plasma-bigscreen-x11-dev.in ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11-dev)
-configure_file(plasma-bigscreen-x11-dev.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/plasma-bigscreen-x11-dev.desktop)
+configure_file(sonicde-tv-dev.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/sonicde-tv-dev.desktop)
 configure_file(install-sessions.sh.cmake ${CMAKE_CURRENT_BINARY_DIR}/install-sessions.sh)

@@ -16,8 +16,8 @@ add_test(
 add_test(
     NAME test_x11_session_metadata
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_x11_session_metadata.py
-        ${CMAKE_BINARY_DIR}/bin/plasma-bigscreen-x11.desktop
-        ${CMAKE_BINARY_DIR}/bin/plasma-bigscreen-x11-dev.desktop
+        ${CMAKE_BINARY_DIR}/bin/sonicde-tv.desktop
+        ${CMAKE_BINARY_DIR}/bin/sonicde-tv-dev.desktop
         ${CMAKE_BINARY_DIR}/bin/install-sessions.sh
 )
 

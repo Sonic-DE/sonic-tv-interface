@@ -29,8 +29,8 @@ class TestX11SessionMetadata(unittest.TestCase):
         self.assertIn("plasma-bigscreen-x11", parser.get("Desktop Entry", "Exec"))
         self.assertIn("plasma-dbus-run-session-if-needed", parser.get("Desktop Entry", "Exec"))
         self.assertIn("plasma-bigscreen-x11", parser.get("Desktop Entry", "TryExec"))
-        self.assertEqual(parser.get("Desktop Entry", "DesktopNames"), "KDE")
-        self.assertEqual(parser.get("Desktop Entry", "OnlyShowIn"), "KDE")
+        self.assertEqual(parser.get("Desktop Entry", "DesktopNames"), "SonicDE;KDE;")
+        self.assertEqual(parser.get("Desktop Entry", "OnlyShowIn"), "SonicDE;")
         self.assertTrue(parser.has_option("Desktop Entry", "X-KDE-PluginInfo-Version"))
 
     def test_development_desktop_fields(self):
@@ -40,7 +40,7 @@ class TestX11SessionMetadata(unittest.TestCase):
         self.assertIn("plasma-bigscreen-x11-dev", parser.get("Desktop Entry", "Exec"))
         self.assertIn("plasma-dbus-run-session-if-needed", parser.get("Desktop Entry", "Exec"))
         self.assertIn("plasma-bigscreen-x11-dev", parser.get("Desktop Entry", "TryExec"))
-        self.assertEqual(parser.get("Desktop Entry", "DesktopNames"), "KDE")
+        self.assertEqual(parser.get("Desktop Entry", "DesktopNames"), "SonicDE;KDE;")
         self.assertTrue(parser.has_option("Desktop Entry", "X-KDE-PluginInfo-Version"))
 
     def test_install_script_uses_xsessions_and_bindir(self):

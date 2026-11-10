@@ -41,3 +41,11 @@ msgstr "Parole"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Atslēgt ekrānu"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Trūkst kļūdu informācija."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Atvērt „%1“"

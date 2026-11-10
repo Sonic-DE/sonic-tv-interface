@@ -41,3 +41,11 @@ msgstr "Senha"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Desbloquear a tela"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nenhuma informação do erro."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Abrir %1"

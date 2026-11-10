@@ -40,3 +40,11 @@ msgstr "Lykilorð"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Aflæsa skjá"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Engar villuupplýsingar"
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Opna %1"

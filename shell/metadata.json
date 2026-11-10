@@ -132,6 +132,5 @@
         "Version": "0.1",
         "Website": "https://plasma-mobile.org"
     },
-    "X-Plasma-APIVersion": "2",
-    "X-Plasma-FallbackPackage": "org.kde.plasma.nano"
+    "X-Plasma-APIVersion": "2"
 }

@@ -42,3 +42,7 @@ msgstr "समाभाष्"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "स्क्रीन अनलॉक करें"
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "%1 उद्घाटयन्तु"

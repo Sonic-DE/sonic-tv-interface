@@ -21,6 +21,11 @@ add_test(
         ${CMAKE_BINARY_DIR}/bin/install-sessions.sh
 )
 
+add_test(
+    NAME test_shell_without_nano
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_shell_without_nano.py ${CMAKE_SOURCE_DIR}
+)
+
 # Envmanager policy test
 add_executable(envmanager_config_test envmanager_config_test.cpp)
 target_include_directories(envmanager_config_test PRIVATE ${CMAKE_SOURCE_DIR}/envmanager)

@@ -8,7 +8,6 @@ import QtQuick.Window
 import QtQuick.Controls as QQC2
 
 import org.kde.plasma.plasmoid
-import org.kde.plasma.private.nanoshell as NanoShell
 
 import org.kde.milou as Milou
 import org.kde.kirigami as Kirigami

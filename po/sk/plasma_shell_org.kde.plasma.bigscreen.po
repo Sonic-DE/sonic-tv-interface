@@ -38,3 +38,11 @@ msgstr "Heslo"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Odomknúť obrazovku"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Žiadne informácie o chybe."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Otvoriť %1"

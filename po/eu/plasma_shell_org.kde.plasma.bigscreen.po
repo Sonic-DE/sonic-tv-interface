@@ -43,3 +43,11 @@ msgstr "Pasahitza"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Pantaila giltzapetik askatu"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Ez dago errore-informaziorik."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Ireki %1"

@@ -41,3 +41,7 @@ msgstr "Palavra-passe"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Desbloquear ecrã"
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Abrir o %1"

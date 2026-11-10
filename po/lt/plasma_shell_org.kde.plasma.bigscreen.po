@@ -42,3 +42,11 @@ msgstr "Slaptažodis"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Atrakinti ekraną"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nėra informacijos apie klaidą."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Atverti %1"

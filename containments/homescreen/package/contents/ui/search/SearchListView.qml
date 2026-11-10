@@ -10,7 +10,6 @@ import QtQuick.Controls as QQC2
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.components 3.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-import org.kde.plasma.private.nanoshell as NanoShell
 import org.kde.bigscreen as Bigscreen
 
 import org.kde.milou as Milou

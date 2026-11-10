@@ -41,3 +41,11 @@ msgstr "Jelszó"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Képernyő feloldása"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nincs hibainformáció."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "%1 megnyitása"

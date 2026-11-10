@@ -42,3 +42,11 @@ msgstr "Passord"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Lås opp skjermen"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Ingen feilinformasjon."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Opna %1"

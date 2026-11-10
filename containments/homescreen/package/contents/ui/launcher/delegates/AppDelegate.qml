@@ -8,7 +8,6 @@
 import QtQuick
 import org.kde.bigscreen as Bigscreen
 import org.kde.kirigami as Kirigami
-import org.kde.plasma.private.nanoshell as NanoShell
 import org.kde.plasma.plasmoid
 
 IconDelegate {

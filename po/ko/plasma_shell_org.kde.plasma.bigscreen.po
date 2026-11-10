@@ -40,3 +40,11 @@ msgstr "암호"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "화면 잠금 해제"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "오류 정보가 없습니다."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "%1 열기"

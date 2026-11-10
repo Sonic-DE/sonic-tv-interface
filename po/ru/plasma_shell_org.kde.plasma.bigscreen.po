@@ -41,3 +41,11 @@ msgstr "Пароль"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Разблокировать экран"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Информация об ошибке отсутствует."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Открыть %1"

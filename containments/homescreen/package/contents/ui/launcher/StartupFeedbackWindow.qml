@@ -11,12 +11,13 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.extras as PlasmaExtras
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.components as PC3
-import org.kde.plasma.private.nanoshell as NanoShell
 import org.kde.plasma.plasmoid
 import org.kde.bigscreen as Bigscreen
 
-NanoShell.FullScreenOverlay {
+Window {
     id: window
+
+    flags: Qt.WindowStaysOnTopHint | Qt.FramelessWindowHint
 
     Connections {
         target: Plasmoid

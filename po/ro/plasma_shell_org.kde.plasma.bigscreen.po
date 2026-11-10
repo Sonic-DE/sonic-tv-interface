@@ -42,3 +42,11 @@ msgstr "Parolă"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Deblochează ecranul"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nicio informație despre eroare."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Deschide %1"

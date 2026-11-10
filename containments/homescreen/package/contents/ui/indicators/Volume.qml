@@ -10,7 +10,6 @@ import QtQuick.Layouts
 import org.kde.plasma.core as PlasmaCore
 import org.kde.plasma.private.volume
 import org.kde.kirigami as Kirigami
-import org.kde.plasma.private.nanoshell as NanoShell
 import org.kde.plasma.plasmoid
 
 import "code/icon.js" as Icon

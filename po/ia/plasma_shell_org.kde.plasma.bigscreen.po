@@ -40,3 +40,11 @@ msgstr "Contrasigno"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Disbloca schermo"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nulle Information de Error."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Aperi %1"

@@ -43,3 +43,11 @@ msgstr "密碼"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "解鎖螢幕"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "沒有錯誤資訊。"
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "開啟 %1"

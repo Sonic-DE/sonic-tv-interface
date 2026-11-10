@@ -43,3 +43,11 @@ msgstr "Contraseña"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Desbloquear pantalla"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "No hay información de errores."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Abrir %1"

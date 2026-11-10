@@ -2,6 +2,10 @@
 
 SonicDE's big-screen interface for TVs, designed to be used from the sofa with a remote or game controller.
 
+## Unreleased
+
+- The TV session shows its home screen again, where it only showed a black screen.
+
 ## 6.8.2 (2026-11-10)
 
 - Now presents itself with SonicDE names and identity throughout the desktop.

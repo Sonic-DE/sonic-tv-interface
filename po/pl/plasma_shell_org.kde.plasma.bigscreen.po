@@ -40,3 +40,11 @@ msgstr "Hasło"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Odblokuj ekran"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Nie ma żadnych błędów."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Otwórz %1"

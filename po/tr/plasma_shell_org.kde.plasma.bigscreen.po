@@ -41,3 +41,11 @@ msgstr "Parola"
 #: contents/lockscreen/PasswordDialog.qml:76
 msgid "Unlock Screen"
 msgstr "Ekran Kilidini Aç"
+
+#: contents/applet/AppletError.qml:43
+msgid "No error information."
+msgstr "Hata bilgisi yok."
+
+#: contents/applet/CompactApplet.qml:75
+msgid "Open %1"
+msgstr "Aç: %1"

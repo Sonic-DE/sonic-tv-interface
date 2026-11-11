@@ -74,14 +74,13 @@ void Settings::applyBigscreenConfiguration()
 
     // kdeglobals
     {
-        setOptionsImmutable(false, BIGSCREEN_KDEGLOBALS_FILE, KDEGLOBALS_SETTINGS);
+        // Older versions forced a global theme here; drop it so the user's own theme applies.
+        setOptionsImmutable(false, BIGSCREEN_KDEGLOBALS_FILE, {});
 
         auto kdeglobals = KSharedConfig::openConfig(BIGSCREEN_KDEGLOBALS_FILE, KConfig::SimpleConfig);
+        KConfigGroup{kdeglobals, u"KDE"_s}.deleteEntry("LookAndFeelPackage");
         writeKeys(u"kdeglobals"_s, kdeglobals, KDEGLOBALS_DEFAULT_SETTINGS); // don't make immutable
-        writeKeys(u"kdeglobals"_s, kdeglobals, KDEGLOBALS_SETTINGS);
         kdeglobals->sync();
-
-        setOptionsImmutable(true, BIGSCREEN_KDEGLOBALS_FILE, KDEGLOBALS_SETTINGS);
     }
 
     // ksmserver

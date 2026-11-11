@@ -27,8 +27,6 @@ const QMap<QString, QMap<QString, QVariant>> APPLICATIONS_BLACKLIST_DEFAULT_SETT
 // plasma-bigscreen/kdeglobals
 const QMap<QString, QMap<QString, QVariant>> KDEGLOBALS_DEFAULT_SETTINGS = {{"General", {{"BrowserApplication", "aura-browser"}}}};
 
-const QMap<QString, QMap<QString, QVariant>> KDEGLOBALS_SETTINGS = {{"KDE", {{"LookAndFeelPackage", "org.kde.plasma.bigscreen"}}}};
-
 // plasma-bigscreen/plasma-keyboardrc
 const QMap<QString, QMap<QString, QVariant>> PLASMAKEYBOARDRC_SETTINGS = {{"General", {{"keyboardNavigationEnabled", true}}}};
 

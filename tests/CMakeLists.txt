@@ -26,6 +26,11 @@ add_test(
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_shell_without_nano.py ${CMAKE_SOURCE_DIR}
 )
 
+add_test(
+    NAME test_envmanager_theme
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_envmanager_theme.py $<TARGET_FILE:plasma-bigscreen-envmanager>
+)
+
 # Envmanager policy test
 add_executable(envmanager_config_test envmanager_config_test.cpp)
 target_include_directories(envmanager_config_test PRIVATE ${CMAKE_SOURCE_DIR}/envmanager)

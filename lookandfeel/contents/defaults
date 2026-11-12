@@ -1,24 +1,35 @@
 # SPDX-FileCopyrightText: 2019 Marco Martin <mart@kde.org>
 # SPDX-FileCopyrightText: 2024 Aditya Mehra <aix.m@outlook.com>
+# SPDX-FileCopyrightText: 2026 Joseph Crowell <joseph.w.crowell@gmail.com>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-[kdeglobals][KDE]
-widgetStyle=Breeze
+[kcminputrc][Mouse]
+cursorTheme=silver_cursors_light
 
 [kdeglobals][General]
-ColorScheme=BreezeDark
+ColorScheme=SilverLight
 
 [kdeglobals][Icons]
-Theme=breeze
+Theme=silver
 
-[plasmarc][Theme]
-name=default
+[kdeglobals][KDE]
+widgetStyle=Silver
 
-[kcminputrc][Mouse]
-cursorTheme=breeze_cursors
+[kwinrc][DesktopSwitcher]
+LayoutName=thumbnail_grid
+
+[kwinrc][WindowSwitcher]
+LayoutName=thumbnail_grid
 
 [kwinrc][org.kde.kdecoration2]
-library=org.kde.breeze
+library=org.kde.silver
+theme=Silver
 
-[KSplash]
-Theme=org.kde.plasma.bigscreen
+[silver/silverrc][Windeco]
+ButtonIconStyle=StyleFluent
+
+[plasmarc][Theme]
+name=silver-light
+
+[ksplashrc][KSplash]
+Theme=org.kde.silverlightbottompanel.desktop

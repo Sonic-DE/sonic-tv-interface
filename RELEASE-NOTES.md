@@ -6,6 +6,7 @@ SonicDE's big-screen interface for TVs, designed to be used from the sofa with a
 
 - The TV session shows its home screen again, where it only showed a black screen.
 - The TV session keeps your own global theme and splash screen, with Silver as the default, instead of switching them to Plasma Bigscreen.
+- The Plasma Bigscreen global theme is now Silver Light - TV, with the Silver look and splash screen, and has a new dark twin, Silver Dark - TV. If you used Plasma Bigscreen, you're moved to Silver Light - TV, or Silver Dark - TV with a dark colour scheme, when you next log in.
 
 ## 6.8.2 (2026-11-10)
 

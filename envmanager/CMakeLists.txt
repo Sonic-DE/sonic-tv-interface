@@ -4,6 +4,7 @@
 set(plasma-bigscreen-envmanager_SRCS
     main.cpp
     settings.cpp
+    sessiontheme.cpp
     utils.cpp
     config.h
 )

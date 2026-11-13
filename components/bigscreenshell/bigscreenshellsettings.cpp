@@ -22,6 +22,7 @@ BigscreenShellSettings::BigscreenShellSettings(QObject *parent)
             Q_EMIT navigationSoundEnabledChanged();
             Q_EMIT windowDecorationsEnabledChanged();
             Q_EMIT navigationRumbleIntensityChanged();
+            Q_EMIT darkModeChanged();
         }
     });
 }
@@ -83,4 +84,26 @@ void BigscreenShellSettings::setNavigationRumbleIntensity(int navigationRumbleIn
     static constexpr int NUM_SETTINGS = 4;
     group.writeEntry("navigationRumbleIntensity", qBound(0, navigationRumbleIntensity, NUM_SETTINGS - 1), KConfigGroup::Notify);
     m_config->sync();
+}
+
+bool BigscreenShellSettings::darkMode() const
+{
+    auto group = KConfigGroup{m_config, GENERAL_CONFIG_GROUP};
+    return group.readEntry("darkMode", false);
+}
+
+void BigscreenShellSettings::setDarkMode(bool dark)
+{
+    if (dark == darkMode()) {
+        return;
+    }
+    auto group = KConfigGroup{m_config, GENERAL_CONFIG_GROUP};
+    group.writeEntry("darkMode", dark, KConfigGroup::Notify);
+    m_config->sync();
+
+    // The environment manager writes the session theme
+    auto *job = new KIO::CommandLauncherJob(QStringLiteral("plasma-bigscreen-envmanager --apply-settings"), {});
+    job->setUiDelegate(new KNotificationJobUiDelegate(KJobUiDelegate::AutoErrorHandlingEnabled));
+    job->setDesktopName(QStringLiteral("org.kde.plasma-bigscreen-envmanager"));
+    job->start();
 }

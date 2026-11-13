@@ -4,7 +4,6 @@
 
 set(bigscreensettings_SRCS
     bigscreensettings.cpp bigscreensettings.h
-    globalthemelistmodel.cpp globalthemelistmodel.h
     timedated_interface.cpp timedated_interface.h
 )
 

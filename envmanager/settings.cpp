@@ -5,6 +5,7 @@
 
 #include "settings.h"
 #include "config.h"
+#include "sessiontheme.h"
 #include "utils.h"
 
 #include <KRuntimePlatform>
@@ -74,11 +75,9 @@ void Settings::applyBigscreenConfiguration()
 
     // kdeglobals
     {
-        // Older versions forced a global theme here; drop it so the user's own theme applies.
         setOptionsImmutable(false, BIGSCREEN_KDEGLOBALS_FILE, {});
 
         auto kdeglobals = KSharedConfig::openConfig(BIGSCREEN_KDEGLOBALS_FILE, KConfig::SimpleConfig);
-        KConfigGroup{kdeglobals, u"KDE"_s}.deleteEntry("LookAndFeelPackage");
         writeKeys(u"kdeglobals"_s, kdeglobals, KDEGLOBALS_DEFAULT_SETTINGS); // don't make immutable
         kdeglobals->sync();
     }
@@ -104,6 +103,9 @@ void Settings::applyBigscreenConfiguration()
 
         setOptionsImmutable(true, BIGSCREEN_PLASMAKEYBOARDRC_FILE, PLASMAKEYBOARDRC_SETTINGS);
     }
+
+    // Last, as the blocks above unlock keys in the overlay files it locks.
+    SessionTheme::apply(m_bigscreenConfig, u"plasma-bigscreen"_s, u"org.sonicde.silver.tv.light"_s, u"org.sonicde.silver.tv.dark"_s);
 }
 
 void Settings::writeKeys(const QString &fileName, KSharedConfig::Ptr &config, const QMap<QString, QMap<QString, QVariant>> &settings)

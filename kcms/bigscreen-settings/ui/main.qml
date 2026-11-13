@@ -73,24 +73,21 @@ Bigscreen.ScrollablePage {
             text: i18n("Wallpaper blur")
             description: i18n("Apply a blur effect to the wallpaper on the homescreen")
 
-            KeyNavigation.down: desktopThemeButton
+            KeyNavigation.down: darkModeDelegate
 
             onCheckedChanged: kcm.setUseWallpaperBlur(checked);
         }
 
-        Bigscreen.ButtonDelegate {
-            id: desktopThemeButton
+        Bigscreen.SwitchDelegate {
+            id: darkModeDelegate
             raisedBackground: true
 
             KeyNavigation.down: windowDecorationsDelegate
 
-            text: i18n("Global theme")
-            description: i18n("Set the system theme")
-
-            onClicked: {
-                root.openOnFocusChanged = desktopThemeButton;
-                themeSidebar.open();
-            }
+            // SonicDE's own catalog, which upstream translation syncs don't replace
+            text: i18nd("sonicde_tv_settings", "Dark Mode")
+            checked: BigscreenShell.Settings.darkMode
+            onCheckedChanged: BigscreenShell.Settings.darkMode = checked
         }
 
         QQC2.Label {
@@ -280,10 +277,6 @@ Bigscreen.ScrollablePage {
 
         DeviceTimeSettingsSidebar {
             id: deviceTimeSettings
-        }
-
-        ThemeSidebar {
-            id: themeSidebar
         }
     }
 }

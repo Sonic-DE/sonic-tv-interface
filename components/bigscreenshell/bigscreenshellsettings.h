@@ -21,6 +21,8 @@ class BigscreenShellSettings : public QObject
     Q_PROPERTY(bool navigationSoundEnabled READ navigationSoundEnabled WRITE setNavigationSoundEnabled NOTIFY navigationSoundEnabledChanged)
     Q_PROPERTY(bool windowDecorationsEnabled READ windowDecorationsEnabled WRITE setWindowDecorationsEnabled NOTIFY windowDecorationsEnabledChanged)
     Q_PROPERTY(int navigationRumbleIntensity READ navigationRumbleIntensity WRITE setNavigationRumbleIntensity NOTIFY navigationRumbleIntensityChanged)
+    // Silver Dark - TV instead of Silver Light - TV
+    Q_PROPERTY(bool darkMode READ darkMode WRITE setDarkMode NOTIFY darkModeChanged)
 
 public:
     BigscreenShellSettings(QObject *parent = nullptr);
@@ -37,11 +39,15 @@ public:
     int navigationRumbleIntensity() const;
     void setNavigationRumbleIntensity(int navigationRumbleIntensity);
 
+    bool darkMode() const;
+    void setDarkMode(bool dark);
+
 Q_SIGNALS:
     void pmInhibitionEnabledChanged();
     void navigationSoundEnabledChanged();
     void windowDecorationsEnabledChanged();
     void navigationRumbleIntensityChanged();
+    void darkModeChanged();
 
 private:
     KConfigWatcher::Ptr m_configWatcher;

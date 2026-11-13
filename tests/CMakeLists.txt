@@ -28,7 +28,7 @@ add_test(
 
 add_test(
     NAME test_envmanager_theme
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_envmanager_theme.py $<TARGET_FILE:plasma-bigscreen-envmanager>
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/test_envmanager_theme.py $<TARGET_FILE:plasma-bigscreen-envmanager> ${CMAKE_SOURCE_DIR}
 )
 
 # Envmanager policy test

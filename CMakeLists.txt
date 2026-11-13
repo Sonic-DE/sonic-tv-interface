@@ -104,6 +104,8 @@ add_subdirectory(kded)
 plasma_install_package(shell org.kde.plasma.bigscreen shells)
 plasma_install_package(lookandfeel org.sonicde.silver.tv.light look-and-feel lookandfeel)
 plasma_install_package(lookandfeel-dark org.sonicde.silver.tv.dark look-and-feel lookandfeel)
+install(DIRECTORY lookandfeel/contents/layouts
+        DESTINATION ${KDE_INSTALL_DATADIR}/plasma/look-and-feel/org.sonicde.silver.tv.dark/contents)
 
 install(FILES org.kde.plasma.bigscreen.metainfo.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 

@@ -7,7 +7,6 @@
  ***************************************************************************/
 
 #include "bigscreensettings.h"
-#include "globalthemelistmodel.h"
 
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -17,21 +16,13 @@
 #include <KLocalizedString>
 #include <KPluginFactory>
 
-#include <KSvg/Svg>
-#include <Plasma/Theme>
 
 #include "timedated_interface.h"
 
 BigscreenSettings::BigscreenSettings(QObject *parent, const KPluginMetaData &data)
     : KQuickConfigModule(parent, data)
-    , m_globalThemeListModel(new GlobalThemeListModel(this))
 {
     setButtons(Apply);
-
-    qmlRegisterAnonymousType<GlobalThemeListModel>("GlobalThemeListModel", 1);
-    m_theme = new Plasma::Theme(this);
-    m_theme->setUseGlobalSettings(true);
-    m_themeName = m_theme->themeName();
 
     OrgFreedesktopTimedate1Interface timedateIface(QStringLiteral("org.freedesktop.timedate1"),
                                                    QStringLiteral("/org/freedesktop/timedate1"),
@@ -44,20 +35,6 @@ void BigscreenSettings::load()
 }
 
 BigscreenSettings::~BigscreenSettings() = default;
-
-void BigscreenSettings::setThemeName(const QString &theme)
-{
-    if (theme != m_themeName) {
-        m_themeName = theme;
-        m_theme->setThemeName(theme);
-        Q_EMIT themeNameChanged();
-    }
-}
-
-QString BigscreenSettings::themeName() const
-{
-    return m_themeName;
-}
 
 bool BigscreenSettings::useColoredTiles()
 {
@@ -207,11 +184,6 @@ void BigscreenSettings::resetShortcut(const QString &action)
 {
     QDBusMessage msg = QDBusMessage::createMethodCall("org.kde.biglauncher", "/BigLauncher", "", action);
     QDBusConnection::sessionBus().send(msg);
-}
-
-GlobalThemeListModel *BigscreenSettings::globalThemeListModel()
-{
-    return m_globalThemeListModel;
 }
 
 K_PLUGIN_CLASS_WITH_JSON(BigscreenSettings, "kcm_mediacenter_bigscreen_settings.json")

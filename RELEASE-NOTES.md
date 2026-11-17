@@ -7,6 +7,8 @@ SonicDE's big-screen interface for TVs, designed to be used from the sofa with a
 - The TV session shows its home screen again, where it only showed a black screen.
 - The TV session has its own look, Silver Light - TV or Silver Dark - TV, kept apart from your desktop's theme, so neither changes the other. The first time, it matches your desktop's light or dark colours, and the new Dark Mode switch in Settings changes it at any time.
 - The Plasma Bigscreen global theme is now Silver Light - TV, with the Silver look and splash screen, and has a new dark twin, Silver Dark - TV. If you used Plasma Bigscreen, you're moved to Silver Light - TV, or Silver Dark - TV with a dark colour scheme, when you next log in.
+- Builds on FreeBSD and GhostBSD, without the Bluetooth settings page, since those systems don't use
+  BlueZ.
 
 ## 6.8.2 (2026-11-10)
 

@@ -39,8 +39,12 @@ include(ECMQmlModule)
 
 remove_definitions(-DQT_NO_CAST_FROM_ASCII)
 
+# FreeBSD has no BlueZ, so the Bluetooth settings are built on Linux only.
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    find_package(KF6BluezQt ${KF_MIN_VERSION} REQUIRED)
+endif()
+
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
-    BluezQt
     Config
     I18n
     Kirigami
